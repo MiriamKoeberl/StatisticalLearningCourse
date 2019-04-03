@@ -1,0 +1,3 @@
+A wordcloud using the quotes from the computer game Sid Meier's Alpha Centauri.
+
+Code based on LDA-DTM_Shakespeare.
