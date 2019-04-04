@@ -10,8 +10,9 @@ Created on Wed Apr  3 15:00:54 2019
 import numpy as np
 import matplotlib.pyplot as plt
 
-#For mu = (0,0), covariance matrix Sigma = identity matrix
+np.random.seed(100) # Set seed from comparability
 
+#For mu = (0,0), covariance matrix Sigma = identity matrix
 n = 500 #Number of random numbers
 a = np.random.exponential(scale=1,size=n)
 phi = np.random.uniform(low=0,high = 2*np.pi,size=n)
@@ -20,7 +21,7 @@ phi = np.random.uniform(low=0,high = 2*np.pi,size=n)
 x = a * np.cos(phi)
 y = a * np.sin(phi)
 
-plt.figure(1)
+plt.figure(figsize=(4,4))
 plt.plot(x,y, 'ro')
 
 #For Covariance matrix sigma = A: Y = X/sqrt(Sigma) ~ N(0,I) => Y*sqrt(Sigma)
@@ -37,8 +38,8 @@ A12=np.dot(np.dot(Gamma,Lambda12),np.transpose(Gamma))
 
 #Solve with matrix multiplication
 c = [x,y]
-N = np.dot(A12,c) 
+tfxy = np.dot(A12,c) 
 
 #print(N)
-plt.figure(2)
-plt.plot(N[0],N[1], 'ro')
+plt.figure(2,figsize=(6,4))
+plt.plot(tfxy[0],tfxy[1], 'ro')
