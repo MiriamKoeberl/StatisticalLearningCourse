@@ -20,14 +20,14 @@ msize = 0.1 # determines the size of the plotted points
 a = np.random.exponential(scale=1,size=n)
 phi = np.random.uniform(low=0,high = 2*np.pi,size=n)
 
-# change to carthesian coordinates
+# change to cartesian coordinates
 x = a * np.cos(phi)
 y = a * np.sin(phi)
 
 plt.figure(figsize=(4,4))
 plt.plot(x,y, 'ro', markersize=msize)
 
-# for Covariance matrix sigma = A: Y = X/sqrt(Sigma) ~ N(0,I) => Y*sqrt(Sigma)
+# for Covariance matrix Sigma = A: Y = X/sqrt(Sigma) ~ N(0,I) => Y*sqrt(Sigma) ~ N(0,Sigma)
 
 # Calculate sqrt(A) with Jordan decomposition
 A=[[3,1],[1,1]]
@@ -43,6 +43,6 @@ A12=np.dot(np.dot(Gamma,Lambda12),np.transpose(Gamma))
 c = [x,y]
 tfxy = np.dot(A12,c) 
 
-# print(N)
+# print(tfxy)
 plt.figure(2,figsize=(6,4))
 plt.plot(tfxy[0],tfxy[1], 'ro', markersize=msize)
