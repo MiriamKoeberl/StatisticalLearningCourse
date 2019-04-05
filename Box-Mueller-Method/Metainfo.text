@@ -1,0 +1,15 @@
+Name: BoxMueller.py
+
+Location: StatisticalLearningCourse/Box-Mueller-Method
+
+Description: 'Generates and plots 2-dimensional normal distributed variables with the Box-Mueller-Method, for the identity and other covariance matrices.'
+
+Key Words:
+-2 dimensional normal distribution
+-random numbers
+-Box-Mueller-Method
+-plot
+
+Authors: Wolfgang Karl Härdle, Anna Maria Pacher, Kathrin Spendier, Miriam Köberl, Patrick Johannes Plum, Philipp Schneider
+
+Upload Date: Friday, April 5 2019 by Miriam Köberl
