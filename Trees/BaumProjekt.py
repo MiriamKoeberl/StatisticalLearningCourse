@@ -222,18 +222,22 @@ rf = RandomForestClassifier(
 )
 min_sample_class = min([sum(y_train==i) for i in set(y_train)])
 res = []
-for i in range(1,min_sample_class):
-    rf.min_samples_leaf = i
-    rf.fit(X_train,y_train)
-    d = dict({'min_samples_leaf':i})
-    d.update({'train':rf.score(X_train,y_train)})
-    d.update({'test':rf.score(X_test,y_test)})
-    res.append(d)
-res = pandas.DataFrame(res)
-res.plot('min_samples_leaf')
-plt.ylabel('Accuracy')
-plt.xlabel('Minimum number of samples in each leaf')
-plt.legend(loc='center left',bbox_to_anchor=(1,0.5), title='Dataset',fancybox=False)
-plt.savefig('RF_accuracy_number_of_samples_per_leaf.png',dpi=300,transparent=True)
-plt.tight_layout()
-plt.show()
+
+if min_sample_class <= 1:
+    print 'A training set has maximally one sample.'
+else:
+    for i in range(1,min_sample_class):
+        rf.min_samples_leaf = i
+        rf.fit(X_train,y_train)
+        d = dict({'min_samples_leaf':i})
+        d.update({'train':rf.score(X_train,y_train)})
+        d.update({'test':rf.score(X_test,y_test)})
+        res.append(d)
+    res = pandas.DataFrame(res)
+    res.plot('min_samples_leaf')
+    plt.ylabel('Accuracy')
+    plt.xlabel('Minimum number of samples in each leaf')
+    plt.legend(loc='center left',bbox_to_anchor=(1,0.5), title='Dataset',fancybox=False)
+    plt.savefig('RF_accuracy_number_of_samples_per_leaf.png',dpi=300,transparent=True)
+    plt.tight_layout()
+    plt.show()
